@@ -4,7 +4,7 @@ use Image::Magick ;
 use Data::Dumper ;
 
 my $imgText = Image::Magick->new;
-my $text = "Achievement Unlocked !\n10G - Yeeeaaaahhh ! 01234567890" ;
+my $text = "Achievement Unlocked !\n10G - Un Générateur d'Achievements XBOX Fonctionnel !!! Yeeeaaaahhh !" ;
 my $textsize = '28' ;
 my $logo = "img/360_logo.png" ;
 
