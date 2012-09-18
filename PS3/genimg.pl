@@ -43,8 +43,8 @@ my @Imgtextinfos = $imgText->QueryMultilineFontMetrics(
 my $imgComposite=Image::Magick->new();
 my $images=Image::Magick->new();
 my $imgplayer=Image::Magick->new();
-$imgplayer->readimage("$imgdir/back_rounded.png") ;
 
+$imgComposite->readimage("$imgdir/back_rounded.png") ;
 ##### BACKGROUND GENERATION
 $imgplayer->ReadImage($logo) ;
 
