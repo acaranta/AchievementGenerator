@@ -17,6 +17,11 @@ my $imgP4 = "$imgdir/p4_off.png" ;
 ##### CGI Start and options parsing
 my $cgi = new CGI ;
 print $cgi->header('Content-type: image/png; charset=utf-8') ;
+my $imgGen ;
+
+sub xboxgen()
+{
+my ($imgComposite) = (@_) ;
 
 my $pText = $cgi->param('text') ;
 my $pPoint = $cgi->param('point') ;
@@ -173,8 +178,10 @@ $imgComposite->Annotate(
 		style => 'bold',
 		) ;
 ###### ADDING TEXT
+}
 
+xboxgen(\$imgGen) ;
 ###### SENDING IMAGE DATA TO STDOUT
 binmode STDOUT;
-$imgComposite->Write('png:-');
+$imgGen->Write('png:-');
 ###### SENDING IMAGE DATA TO STDOUT
