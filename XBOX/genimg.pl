@@ -38,11 +38,11 @@ if ($pText ne "")
 
 
 #### Getting Logo image information
+my $imgText = Image::Magick->new;
 my @ImgLogoinfos = $imgText->Ping("$logo") ;
 #### Getting Logo image information
 
 #### Getting Text informations
-my $imgText = Image::Magick->new;
 $imgText->ReadImage('NULL:purple') ;
 my @Imgtextinfos = $imgText->QueryMultilineFontMetrics(
 		text => $text, 
