@@ -9,6 +9,10 @@ my $text = "Achievement Unlocked !" ;
 my $textsize = '28' ;
 my $logo = "$imgdir/360_logo.png" ;
 my $fontfile = 'fonts/ConvectionRegular.ttf' ;
+my $imgP1 = '$imgdir/p1_on_green.png' ;
+my $imgP2 = '$imgdir/p2_off.png' ;
+my $imgP3 = '$imgdir/p3_off.png' ;
+my $imgP4 = '$imgdir/p4_off.png' ;
 
 ##### CGI Start and options parsing
 my $cgi = new CGI ;
@@ -55,28 +59,28 @@ my $imgplayer=Image::Magick->new();
 $imgplayer->readimage('$imgdir/dark_circle.png') ;
 
 my $imgplayer2=Image::Magick->new();
-$imgplayer2->readimage('$imgdir/p1_on_green.png') ;
+$imgplayer2->readimage($imgP1) ;
 $imgplayer->Composite(
 		image => $imgplayer2, 
 		gravity => 'northwest', 
 		geometry => "+3+3"
 		) ;
 my $imgplayer2=Image::Magick->new();
-$imgplayer2->readimage('$imgdir/p2_off.png') ;
+$imgplayer2->readimage($imgP2) ;
 $imgplayer->Composite(
 		image => $imgplayer2, 
 		gravity => 'northeast', 
 		geometry => "-3+3"
 		) ;
 my $imgplayer2=Image::Magick->new();
-$imgplayer2->readimage('$imgdir/p3_off.png') ;
+$imgplayer2->readimage($imgP3) ;
 $imgplayer->Composite(
 		image => $imgplayer2, 
 		gravity => 'southwest', 
 		geometry => "+3-3"
 		) ;
 my $imgplayer2=Image::Magick->new();
-$imgplayer2->readimage('$imgdir/p4_off.png') ;
+$imgplayer2->readimage($imgP4) ;
 $imgplayer->Composite(
 		image => $imgplayer2, 
 		gravity => 'southeast', 
