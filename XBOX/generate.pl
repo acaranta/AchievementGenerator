@@ -8,7 +8,7 @@ my $imgText = Image::Magick->new;
 my $text = "Achievement Unlocked !" ;
 my $textsize = '28' ;
 my $logo = "img/360_logo.png" ;
-my $fontfile = 'fonts/ConvectionRegular.ttf'
+my $fontfile = 'fonts/ConvectionRegular.ttf' ;
 
 my $cgi = new CGI ;
 print $cgi->header('Content-type: image/png; charset=utf-8') ;
@@ -23,7 +23,7 @@ my $pPoint = $pPoint."G";
 
 if ($pText ne "")
 {
-$text = "Achievement Unlocked !\n$pPoint - $pText" ;
+	$text = "Achievement Unlocked !\n$pPoint - $pText" ;
 } 
 
 #### Getting Logo image information
@@ -157,5 +157,5 @@ $imgComposite->Annotate(
 ###### ADDING TEXT
 
 
-  binmode STDOUT;
-  $imgComposite->Write('png:-');
+binmode STDOUT;
+$imgComposite->Write('png:-');
