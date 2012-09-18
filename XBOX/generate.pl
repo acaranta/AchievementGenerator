@@ -5,14 +5,26 @@ use Image::Magick ;
 use Data::Dumper ;
 
 my $imgText = Image::Magick->new;
-my $text = "Achievement Unlocked !\n10G - Un Générateur d'Achievements XBOX Fonctionnel !!! Yeeeaaaahhh !" ;
+my $text = "Achievement Unlocked !" ;
 my $textsize = '28' ;
 my $logo = "img/360_logo.png" ;
 my $fontfile = 'fonts/ConvectionRegular.ttf'
 
 my $cgi = new CGI ;
-print $cgi->header('Content-type: text/html; charset=utf-8') ;
-print $cgi->start_html(-title=>"XBOX Achievement Generator", -encoding=>"UTF-8") ;
+print $cgi->header('Content-type: image/png; charset=utf-8') ;
+#print $cgi->start_html(-title=>"XBOX Achievement Generator", -encoding=>"UTF-8") ;
+
+my $pText = $cgi->param('text') ;
+my $pPoint = $cgi->param('point') ;
+if ($pPoint !~ /[0-9]+/) {
+	$pPoint = 10 ;
+}
+my $pPoint = $pPoint."G";
+
+if ($pText ne "")
+{
+$text = "Achievement Unlocked !\n$pPoint - $pText" ;
+} 
 
 #### Getting Logo image information
 my @ImgLogoinfos = $imgText->Ping("$logo") ;
@@ -145,5 +157,5 @@ $imgComposite->Annotate(
 ###### ADDING TEXT
 
 
-
-$imgComposite->Write('out.png') ;
+  binmode STDOUT;
+  $imgComposite->Write('png:-');
