@@ -5,7 +5,7 @@ use Image::Magick ;
 use Data::Dumper ;
 
 my $imgdir = 'img' ;
-my $text = "Achievement Unlocked !" ;
+my $text = "" ;
 my $textsize = '28' ;
 my $logo = "$imgdir/trophy.png" ;
 my $fontfile = "fonts/ConvectionRegular.ttf" ;
@@ -20,6 +20,12 @@ print $cgi->header('Content-type: image/png; charset=utf-8') ;
 
 my $pText = $cgi->param('text') ;
 my $pPoint = $cgi->param('point') ;
+my $pLocale = $cgi->param('locale') ;
+
+if ($pLocale eq "fr") { $text = "Succès déverrouillé !" ; }
+else { $text = "Achievement Unlocked !" ; }
+
+
 if ($pPoint !~ /[0-9]+/) {
 	$pPoint = 0 ;
 }
@@ -32,7 +38,7 @@ if ($pPoint != 0) {
 
 if ($pText ne "")
 {
-	$text = "Achievement Unlocked !\n$pPoint$pText" ;
+	$text = "$text\n$pPoint$pText" ;
 } 
 ##### CGI Start and options parsing
 
