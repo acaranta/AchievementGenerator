@@ -4,10 +4,10 @@ use CGI ;
 use Image::Magick ;
 use Data::Dumper ;
 
-my $imgText = Image::Magick->new;
+my $imgdir = 'img' ;
 my $text = "Achievement Unlocked !" ;
 my $textsize = '28' ;
-my $logo = "img/360_logo.png" ;
+my $logo = "$imgdir/360_logo.png" ;
 my $fontfile = 'fonts/ConvectionRegular.ttf' ;
 
 ##### CGI Start and options parsing
@@ -32,11 +32,13 @@ if ($pText ne "")
 } 
 ##### CGI Start and options parsing
 
+
 #### Getting Logo image information
 my @ImgLogoinfos = $imgText->Ping("$logo") ;
 #### Getting Logo image information
 
 #### Getting Text informations
+my $imgText = Image::Magick->new;
 $imgText->ReadImage('NULL:purple') ;
 my @Imgtextinfos = $imgText->QueryMultilineFontMetrics(
 		text => $text, 
@@ -50,31 +52,31 @@ my @Imgtextinfos = $imgText->QueryMultilineFontMetrics(
 #### LOGO + Player Generation
 my $images=Image::Magick->new();
 my $imgplayer=Image::Magick->new();
-$imgplayer->readimage('img/dark_circle.png') ;
+$imgplayer->readimage('$imgdir/dark_circle.png') ;
 
 my $imgplayer2=Image::Magick->new();
-$imgplayer2->readimage('img/p1_on_green.png') ;
+$imgplayer2->readimage('$imgdir/p1_on_green.png') ;
 $imgplayer->Composite(
 		image => $imgplayer2, 
 		gravity => 'northwest', 
 		geometry => "+3+3"
 		) ;
 my $imgplayer2=Image::Magick->new();
-$imgplayer2->readimage('img/p2_off.png') ;
+$imgplayer2->readimage('$imgdir/p2_off.png') ;
 $imgplayer->Composite(
 		image => $imgplayer2, 
 		gravity => 'northeast', 
 		geometry => "-3+3"
 		) ;
 my $imgplayer2=Image::Magick->new();
-$imgplayer2->readimage('img/p3_off.png') ;
+$imgplayer2->readimage('$imgdir/p3_off.png') ;
 $imgplayer->Composite(
 		image => $imgplayer2, 
 		gravity => 'southwest', 
 		geometry => "+3-3"
 		) ;
 my $imgplayer2=Image::Magick->new();
-$imgplayer2->readimage('img/p4_off.png') ;
+$imgplayer2->readimage('$imgdir/p4_off.png') ;
 $imgplayer->Composite(
 		image => $imgplayer2, 
 		gravity => 'southeast', 
@@ -109,20 +111,20 @@ my $imgInner = $images->Montage(
 ##### BACKGROUND GENERATION
 my $images=Image::Magick->new();;
 my $imgComposite = Image::Magick->new;
-$imgComposite->ReadImage('img/left_cap.png') ;
+$imgComposite->ReadImage('$imgdir/left_cap.png') ;
 $imgComposite->Resize(
 		height => $height
 		) ;
 push(@$images,$imgComposite) ;
 my $imgComposite = Image::Magick->new;
-$imgComposite->ReadImage('img/middle.png') ;
+$imgComposite->ReadImage('$imgdir/middle.png') ;
 $imgComposite->Resize(
 		width => $width, 
 		height => $height
 		) ;
 push(@$images,$imgComposite) ;
 my $imgComposite = Image::Magick->new;
-$imgComposite->ReadImage('img/left_cap.png') ;
+$imgComposite->ReadImage('$imgdir/left_cap.png') ;
 $imgComposite->Flop() ;
 $imgComposite->Resize(
 		height => $height
