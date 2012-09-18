@@ -21,12 +21,12 @@ my @ImgLogoinfos = $imgText->Ping("$logo") ;
 #### Getting Text informations
 $imgText->ReadImage('NULL:purple') ;
 my @Imgtextinfos = $imgText->QueryMultilineFontMetrics(
-			text => $text, 
-			geometry => '+0+0', 
-			font => $fontfile, 
-			gravity => 'west',
-			pointsize => $textsize
-	    ) ;
+		text => $text, 
+		geometry => '+0+0', 
+		font => $fontfile, 
+		gravity => 'west',
+		pointsize => $textsize
+		) ;
 #### Getting Text informations
 
 #### LOGO + Player Generation
@@ -37,38 +37,38 @@ $imgplayer->readimage('img/dark_circle.png') ;
 my $imgplayer2=Image::Magick->new();
 $imgplayer2->readimage('img/p1_on_green.png') ;
 $imgplayer->Composite(
-image => $imgplayer2, 
-gravity => 'northwest', 
-geometry => "+3+3"
-) ;
+		image => $imgplayer2, 
+		gravity => 'northwest', 
+		geometry => "+3+3"
+		) ;
 my $imgplayer2=Image::Magick->new();
 $imgplayer2->readimage('img/p2_off.png') ;
 $imgplayer->Composite(
-image => $imgplayer2, 
-gravity => 'northeast', 
-geometry => "-3+3"
-) ;
+		image => $imgplayer2, 
+		gravity => 'northeast', 
+		geometry => "-3+3"
+		) ;
 my $imgplayer2=Image::Magick->new();
 $imgplayer2->readimage('img/p3_off.png') ;
 $imgplayer->Composite(
-image => $imgplayer2, 
-gravity => 'southwest', 
-geometry => "+3-3"
-) ;
+		image => $imgplayer2, 
+		gravity => 'southwest', 
+		geometry => "+3-3"
+		) ;
 my $imgplayer2=Image::Magick->new();
 $imgplayer2->readimage('img/p4_off.png') ;
 $imgplayer->Composite(
-image => $imgplayer2, 
-gravity => 'southeast', 
-geometry => "-3-3"
-) ;
+		image => $imgplayer2, 
+		gravity => 'southeast', 
+		geometry => "-3-3"
+		) ;
 
 my $imgLogo=Image::Magick->new();
 $imgLogo->ReadImage($logo) ;
 $imgplayer->Composite(
-image => $imgLogo, 
-gravity => 'center'
-) ;
+		image => $imgLogo, 
+		gravity => 'center'
+		) ;
 
 my $images=Image::Magick->new();
 $imgText->Resize(
@@ -82,10 +82,10 @@ my $width = (@ImgLogoinfos[0])+(@Imgtextinfos[4]) ;
 my $height = (@ImgLogoinfos[1])+(@Imgtextinfos[5]-5) ;
 
 my $imgInner = $images->Montage(
-geometry => "+0+0", 
-compose => 'over' , 
-border => '0'
-) ;
+		geometry => "+0+0", 
+		compose => 'over' , 
+		border => '0'
+		) ;
 #### LOGO + Player Generation
 
 ##### BACKGROUND GENERATION
@@ -93,43 +93,43 @@ my $images=Image::Magick->new();;
 my $imgComposite = Image::Magick->new;
 $imgComposite->ReadImage('img/left_cap.png') ;
 $imgComposite->Resize(
-height => $height
-) ;
+		height => $height
+		) ;
 push(@$images,$imgComposite) ;
 my $imgComposite = Image::Magick->new;
 $imgComposite->ReadImage('img/middle.png') ;
 $imgComposite->Resize(
-width => $width, 
-height => $height
-) ;
+		width => $width, 
+		height => $height
+		) ;
 push(@$images,$imgComposite) ;
 my $imgComposite = Image::Magick->new;
 $imgComposite->ReadImage('img/left_cap.png') ;
 $imgComposite->Flop() ;
 $imgComposite->Resize(
-height => $height
-) ;
+		height => $height
+		) ;
 push(@$images,$imgComposite) ;
 my $imgComposite = Image::Magick->new;
 
 $imgComposite = $images->Montage(
-geometry => "+0+0", 
-compose => 'over' , 
-border => '0', 
-gravity => 'center'
-) ;
+		geometry => "+0+0", 
+		compose => 'over' , 
+		border => '0', 
+		gravity => 'center'
+		) ;
 $imgComposite->Transparent(
-color => 'white' 
-);
+		color => 'white' 
+		);
 ##### BACKGROUND GENERATION
 
 ###### ADDING LEFT LOGOS
 $imgComposite->Composite(
-image => $imgplayer, 
-composite => 'over', 
-gravity => 'west', 
-x => '+10'
-) ;
+		image => $imgplayer, 
+		composite => 'over', 
+		gravity => 'west', 
+		x => '+10'
+		) ;
 ###### ADDING LEFT LOGOS
 
 ###### ADDING TEXT
