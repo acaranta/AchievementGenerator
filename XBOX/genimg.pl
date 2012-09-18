@@ -7,7 +7,7 @@ use Data::Dumper ;
 my $imgdir = 'img' ;
 my $text = "Achievement Unlocked !" ;
 my $textsize = '28' ;
-my $logo = "$imgdir/360_logo.png" ;
+my $logo = "$imgdir/trophy.png" ;
 my $fontfile = "fonts/ConvectionRegular.ttf" ;
 my $imgP1 = "$imgdir/p1_on_green.png" ;
 my $imgP2 = "$imgdir/p2_off.png" ;
