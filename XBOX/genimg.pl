@@ -19,11 +19,14 @@ my $pPoint = $cgi->param('point') ;
 if ($pPoint !~ /[0-9]+/) {
 	$pPoint = 1 ;
 }
-my $pPoint = $pPoint."G";
+
+if ($pPoint !=0) {
+	my $pPoint = $pPoint."G - ";
+}
 
 if ($pText ne "")
 {
-	$text = "Achievement Unlocked !\n$pPoint - $pText" ;
+	$text = "Achievement Unlocked !\n$pPoint$pText" ;
 } 
 ##### CGI Start and options parsing
 
