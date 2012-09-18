@@ -20,8 +20,10 @@ if ($pPoint !~ /[0-9]+/) {
 	$pPoint = 1 ;
 }
 
-if ($pPoint !=0) {
-	my $pPoint = $pPoint."G - ";
+if ($pPoint !=i 0) {
+	$pPoint = $pPoint."G - ";
+} else {
+	$pPoint = "" ;
 }
 
 if ($pText ne "")
