@@ -8,11 +8,11 @@ my $imgdir = 'img' ;
 my $text = "Achievement Unlocked !" ;
 my $textsize = '28' ;
 my $logo = "$imgdir/360_logo.png" ;
-my $fontfile = 'fonts/ConvectionRegular.ttf' ;
-my $imgP1 = '$imgdir/p1_on_green.png' ;
-my $imgP2 = '$imgdir/p2_off.png' ;
-my $imgP3 = '$imgdir/p3_off.png' ;
-my $imgP4 = '$imgdir/p4_off.png' ;
+my $fontfile = "fonts/ConvectionRegular.ttf" ;
+my $imgP1 = "$imgdir/p1_on_green.png" ;
+my $imgP2 = "$imgdir/p2_off.png" ;
+my $imgP3 = "$imgdir/p3_off.png" ;
+my $imgP4 = "$imgdir/p4_off.png" ;
 
 ##### CGI Start and options parsing
 my $cgi = new CGI ;
@@ -56,7 +56,7 @@ my @Imgtextinfos = $imgText->QueryMultilineFontMetrics(
 #### LOGO + Player Generation
 my $images=Image::Magick->new();
 my $imgplayer=Image::Magick->new();
-$imgplayer->readimage('$imgdir/dark_circle.png') ;
+$imgplayer->readimage("$imgdir/dark_circle.png") ;
 
 my $imgplayer2=Image::Magick->new();
 $imgplayer2->readimage($imgP1) ;
@@ -115,20 +115,20 @@ my $imgInner = $images->Montage(
 ##### BACKGROUND GENERATION
 my $images=Image::Magick->new();;
 my $imgComposite = Image::Magick->new;
-$imgComposite->ReadImage('$imgdir/left_cap.png') ;
+$imgComposite->ReadImage("$imgdir/left_cap.png") ;
 $imgComposite->Resize(
 		height => $height
 		) ;
 push(@$images,$imgComposite) ;
 my $imgComposite = Image::Magick->new;
-$imgComposite->ReadImage('$imgdir/middle.png') ;
+$imgComposite->ReadImage("$imgdir/middle.png") ;
 $imgComposite->Resize(
 		width => $width, 
 		height => $height
 		) ;
 push(@$images,$imgComposite) ;
 my $imgComposite = Image::Magick->new;
-$imgComposite->ReadImage('$imgdir/left_cap.png') ;
+$imgComposite->ReadImage("$imgdir/left_cap.png") ;
 $imgComposite->Flop() ;
 $imgComposite->Resize(
 		height => $height
