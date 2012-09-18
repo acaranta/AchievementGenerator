@@ -7,6 +7,7 @@ my $imgText = Image::Magick->new;
 my $text = "Achievement Unlocked !\n10G - Un Générateur d'Achievements XBOX Fonctionnel !!! Yeeeaaaahhh !" ;
 my $textsize = '28' ;
 my $logo = "img/360_logo.png" ;
+my $fontfile = 'fonts/ConvectionRegular.ttf'
 
 
 my @ImgLogoinfos = $imgText->Ping("$logo") ;
@@ -16,7 +17,7 @@ $imgText->ReadImage('NULL:purple') ;
 my @Imgtextinfos = $imgText->QueryMultilineFontMetrics(
 			text => $text, 
 			geometry => '+0+0', 
-			font => 'ConvectionRegular.ttf', 
+			font => $fontfile, 
 			gravity => 'west',
 			pointsize => $textsize
 	    ) ;
@@ -84,7 +85,7 @@ $imgComposite->Composite(image => $imgplayer, composite => 'over', gravity => 'w
 $imgComposite->Annotate(
 		text => $text, 
 		geometry => '+140+0', 
-		font => 'ConvectionRegular.ttf', 
+		font => $fontfile, 
 		pointsize => $textsize,
 		fill => 'white',
 		gravity => 'west',
