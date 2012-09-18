@@ -8,7 +8,6 @@ my $imgdir = 'img' ;
 my $text = "" ;
 my $textsize = '28' ;
 my $logo = "$imgdir/trophy.png" ;
-my $fontfile = "fonts/ConvectionRegular.ttf" ;
 my $imgP1 = "$imgdir/p1_on_green.png" ;
 my $imgP2 = "$imgdir/p2_off.png" ;
 my $imgP3 = "$imgdir/p3_off.png" ;
@@ -21,6 +20,9 @@ my $imgGen ;
 
 sub xboxgen()
 {
+$imgdir = "XBOX/$imgdir" ;
+my $fontfile = "fonts/ConvectionRegular.ttf" ;
+
 my ($imgComposite) = (@_) ;
 
 my $pText = $cgi->param('text') ;
