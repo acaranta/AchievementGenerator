@@ -5,34 +5,20 @@ use Image::Magick ;
 use Data::Dumper ;
 
 my $imgdir = 'img' ;
-my $text = "Achievement Unlocked !" ;
+my $text = "You have earned a trophy" ;
 my $textsize = '28' ;
-my $logo = "$imgdir/trophy.png" ;
-my $fontfile = "fonts/ConvectionRegular.ttf" ;
-my $imgP1 = "$imgdir/p1_on_green.png" ;
-my $imgP2 = "$imgdir/p2_off.png" ;
-my $imgP3 = "$imgdir/p3_off.png" ;
-my $imgP4 = "$imgdir/p4_off.png" ;
+my $logo = "$imgdir/OrangeLogo.png" ;
+my $fontfile = "fonts/SCE-PS3-RD-R-LATIN2.TTF" ;
 
 ##### CGI Start and options parsing
 my $cgi = new CGI ;
 print $cgi->header('Content-type: image/png; charset=utf-8') ;
 
 my $pText = $cgi->param('text') ;
-my $pPoint = $cgi->param('point') ;
-if ($pPoint !~ /[0-9]+/) {
-	$pPoint = 0 ;
-}
-
-if ($pPoint != 0) {
-	$pPoint = $pPoint."G - ";
-} else {
-	$pPoint = "" ;
-}
 
 if ($pText ne "")
 {
-	$text = "Achievement Unlocked !\n$pPoint$pText" ;
+	$text = "You have earned a trophy\n$pText" ;
 } 
 ##### CGI Start and options parsing
 
@@ -53,99 +39,14 @@ my @Imgtextinfos = $imgText->QueryMultilineFontMetrics(
 		) ;
 #### Getting Text informations
 
-#### LOGO + Player Generation
+##### BACKGROUND GENERATION
+my $imgComposite=Image::Magick->new();
 my $images=Image::Magick->new();
 my $imgplayer=Image::Magick->new();
-$imgplayer->readimage("$imgdir/dark_circle.png") ;
-
-my $imgplayer2=Image::Magick->new();
-$imgplayer2->readimage($imgP1) ;
-$imgplayer->Composite(
-		image => $imgplayer2, 
-		gravity => 'northwest', 
-		geometry => "+3+3"
-		) ;
-my $imgplayer2=Image::Magick->new();
-$imgplayer2->readimage($imgP2) ;
-$imgplayer->Composite(
-		image => $imgplayer2, 
-		gravity => 'northeast', 
-		geometry => "-3+3"
-		) ;
-my $imgplayer2=Image::Magick->new();
-$imgplayer2->readimage($imgP3) ;
-$imgplayer->Composite(
-		image => $imgplayer2, 
-		gravity => 'southwest', 
-		geometry => "+3-3"
-		) ;
-my $imgplayer2=Image::Magick->new();
-$imgplayer2->readimage($imgP4) ;
-$imgplayer->Composite(
-		image => $imgplayer2, 
-		gravity => 'southeast', 
-		geometry => "-3-3"
-		) ;
-
-my $imgLogo=Image::Magick->new();
-$imgLogo->ReadImage($logo) ;
-$imgplayer->Composite(
-		image => $imgLogo, 
-		gravity => 'center'
-		) ;
-
-my $images=Image::Magick->new();
-$imgText->Resize(
-		width => @Imgtextinfos[4],
-		height => @Imgtextinfos[5],
-		) ;
-push(@$images,$imgplayer) ;
-push(@$images,$imgText) ;
-
-my $width = (@ImgLogoinfos[0])+(@Imgtextinfos[4]) ;
-my $height = (@ImgLogoinfos[1])+(@Imgtextinfos[5]-5) ;
-
-my $imgInner = $images->Montage(
-		geometry => "+0+0", 
-		compose => 'over' , 
-		border => '0'
-		) ;
-#### LOGO + Player Generation
+$imgplayer->readimage("$imgdir/back_rounded.png") ;
 
 ##### BACKGROUND GENERATION
-my $images=Image::Magick->new();;
-my $imgComposite = Image::Magick->new;
-$imgComposite->ReadImage("$imgdir/left_cap.png") ;
-$imgComposite->Resize(
-		height => $height
-		) ;
-push(@$images,$imgComposite) ;
-my $imgComposite = Image::Magick->new;
-$imgComposite->ReadImage("$imgdir/middle.png") ;
-$imgComposite->Resize(
-		width => $width, 
-		height => $height
-		) ;
-push(@$images,$imgComposite) ;
-my $imgComposite = Image::Magick->new;
-$imgComposite->ReadImage("$imgdir/left_cap.png") ;
-$imgComposite->Flop() ;
-$imgComposite->Resize(
-		height => $height
-		) ;
-push(@$images,$imgComposite) ;
-my $imgComposite = Image::Magick->new;
-
-$imgComposite = $images->Montage(
-		geometry => "+0+0", 
-		compose => 'over' , 
-		border => '0', 
-		gravity => 'center'
-		) ;
-$imgComposite->Transparent(
-		color => 'white' 
-		);
-##### BACKGROUND GENERATION
+$imgplayer->ReadImage($logo) ;
 
 ###### ADDING LEFT LOGOS
 $imgComposite->Composite(
