@@ -17,10 +17,10 @@ print $cgi->header('Content-type: image/png; charset=utf-8') ;
 my $pText = $cgi->param('text') ;
 my $pPoint = $cgi->param('point') ;
 if ($pPoint !~ /[0-9]+/) {
-	$pPoint = 1 ;
+	$pPoint = 0 ;
 }
 
-if ($pPoint !=i 0) {
+if ($pPoint != 0) {
 	$pPoint = $pPoint."G - ";
 } else {
 	$pPoint = "" ;
