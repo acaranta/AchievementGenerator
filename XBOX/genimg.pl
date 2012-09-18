@@ -10,9 +10,9 @@ my $textsize = '28' ;
 my $logo = "img/360_logo.png" ;
 my $fontfile = 'fonts/ConvectionRegular.ttf' ;
 
+##### CGI Start and options parsing
 my $cgi = new CGI ;
 print $cgi->header('Content-type: image/png; charset=utf-8') ;
-#print $cgi->start_html(-title=>"XBOX Achievement Generator", -encoding=>"UTF-8") ;
 
 my $pText = $cgi->param('text') ;
 my $pPoint = $cgi->param('point') ;
@@ -25,6 +25,7 @@ if ($pText ne "")
 {
 	$text = "Achievement Unlocked !\n$pPoint - $pText" ;
 } 
+##### CGI Start and options parsing
 
 #### Getting Logo image information
 my @ImgLogoinfos = $imgText->Ping("$logo") ;
@@ -156,6 +157,7 @@ $imgComposite->Annotate(
 		) ;
 ###### ADDING TEXT
 
-
+###### SENDING IMAGE DATA TO STDOUT
 binmode STDOUT;
 $imgComposite->Write('png:-');
+###### SENDING IMAGE DATA TO STDOUT
