@@ -28,7 +28,8 @@ sub ps3gen
 	my $textHeader = "You have earned a trophy" ;
 	my $text = "" ;
 	my $textsize = '28' ;
-	my $logo = "$imgdir/OrangeLogo.png" ;
+#	my $logo = "$imgdir/OrangeLogo.png" ;
+	my $logo = "$imgdir/psn_logo.png" ;
 #my $fontfile = "fonts/SCE-PS3-RD-R-LATIN2.TTF" ;
 	my $fontfile = "PS3/fonts/SCE-PS3-RD-L-LATIN2.TTF" ;
 	my $fontfilebold = "PS3/fonts/SCE-PS3-RD-B-LATIN2.TTF" ;
