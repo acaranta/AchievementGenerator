@@ -3,14 +3,14 @@
 ### XBOX/PS3 Achievement/Trophy Generator
 ### Author : Arthur Caranta
 ### Date : 2012-09-18
-### Version : 1.0
+### Version : 1.0.1
 #########################################################################################
 
 use strict ;
 use CGI ;
 use Image::Magick ;
 use Digest::MD5 qw(md5 md5_hex md5_base64);
-
+use Data::Dumper ;
 my $imgdir = 'img' ;
 my $cachedir = "cache" ;
 my $cachestring = "" ;
@@ -179,9 +179,12 @@ sub xboxgen
 		$pPoint = "" ;
 	}
 
-	if ($pText ne "")
+	if (defined($pText))
 	{
 		$text = "$text\n$pPoint$pText" ;
+	} else {
+		$text = "$text\n$pPoint..." ;
+
 	} 
 ##### CGI Start and options parsing
 
@@ -360,6 +363,20 @@ if ($pMode eq "ps3")
 		$imgGen=Image::Magick->new();
 		$imgGen->ReadImage($cachestring) ;
 	}
+}
+my $pSize = $cgi->param('size') ;
+#$pSize = "200" ;
+if ($pSize =~ /[0-9+]/)
+{
+	my $width = $imgGen->Get('columns');
+	my $height = $imgGen->Get('rows'); ;
+	my $ratio = $width / $height ;
+	$height = ($pSize * $height) / $width ;
+
+	$imgGen->Resize(
+			width => $pSize,
+			height => $height
+		       ) ;
 }
 ###### SENDING IMAGE DATA TO STDOUT
 binmode STDOUT;

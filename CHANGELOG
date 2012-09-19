@@ -1,0 +1,8 @@
+1.0.1 :
+*Added size parameter support
+*added CHANGELOG
+*updated README
+*updated defult for xbox text if not entered
+
+1.0 :
+*Release of initial dual XBOX/PS3 ahievement generator
