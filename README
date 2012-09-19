@@ -43,3 +43,4 @@ Every other time the same image/parameters are asked, it is read from the disk i
 *[XBOX] Allow differente Player LEDs configuration
 *write a generator wrapper, html forms etc
 *[PS3] Allow easy change of the logo used
+*Allow resize of generated images
