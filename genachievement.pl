@@ -3,7 +3,7 @@
 ### XBOX/PS3 Achievement/Trophy Generator
 ### Author : Arthur Caranta
 ### Date : 2012-09-18
-### Version : 1.0.1
+### Version : 1.0.2
 #########################################################################################
 
 use strict ;
