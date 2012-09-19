@@ -15,18 +15,25 @@ point your browser to http://<whateverhteinstallpath>/generateimage.pl?<paramete
 Parameters are passed as POST variables.
 
 2.1 Parameters
-2.1.1 for XBOX Achievements
-*mode=xbox
+2.1.1 Common Parameters
+*mode=(xbox|ps3)
 *locale=(en|fr)
 *text=<well...your text which should be shown on the second line>
+*size=[0-9]+ ... Sets the output image width
+
+2.1.2 for XBOX Achievements
 *point=[0-9]+ ... this allows to show a GamerPoint earned score
 
-2.1.2 for PS3 Trophies
-*mode=ps3
-*locale=(en|fr)
-*text=<well...your text which should be shown on the second line>
+2.1.3 for PS3 Trophies
 *level=[0-3] ... this allows to change the level of the trophy ranging from 0 to 3... which is from bronze up to platinum
 
+2.1.4 Defaults 
+if the parameters are omitted then they are set like this :
+*mode=xbox
+*locale=en
+*size=about 450px
+*point=0 ... nothing shown
+*level=0 .. bronze
 
 3 How it works
 It uses ImageMagick, several pieces of images and fonts to generate mockups of achievements/trophies well known of gamers.
@@ -43,4 +50,6 @@ Every other time the same image/parameters are asked, it is read from the disk i
 *[XBOX] Allow differente Player LEDs configuration
 *write a generator wrapper, html forms etc
 *[PS3] Allow easy change of the logo used
-*Allow resize of generated images
+*Allow a way to return directly an url to the cached generted image
+*add a nocacheparameter
+*add a way to empty cache (?)
