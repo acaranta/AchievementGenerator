@@ -31,15 +31,15 @@ sub imgcached
 
 sub ps3gen
 {
-	$imgdir = "PS3/$imgdir" ;
+	$imgdir = "$imgdir/PS3" ;
 	my $textHeader = "You have earned a trophy" ;
 	my $text = "" ;
 	my $textsize = '28' ;
 #	my $logo = "$imgdir/OrangeLogo.png" ;
 	my $logo = "$imgdir/psn_logo.png" ;
 #my $fontfile = "fonts/SCE-PS3-RD-R-LATIN2.TTF" ;
-	my $fontfile = "PS3/fonts/SCE-PS3-RD-L-LATIN2.TTF" ;
-	my $fontfilebold = "PS3/fonts/SCE-PS3-RD-B-LATIN2.TTF" ;
+	my $fontfile = "fonts/PS3/SCE-PS3-RD-L-LATIN2.TTF" ;
+	my $fontfilebold = "fonts/PS3/SCE-PS3-RD-B-LATIN2.TTF" ;
 	my $pLevel = "0" ;
 	my $trophy = "" ;
 
@@ -150,8 +150,8 @@ sub xboxgen
 #	my ($imgComposite) = (@_) ;
 
 
-	$imgdir = "XBOX/$imgdir" ;
-	my $fontfile = "XBOX/fonts/ConvectionRegular.ttf" ;
+	$imgdir = "$imgdir/XBOX" ;
+	my $fontfile = "fonts/XBOX/ConvectionRegular.ttf" ;
 
 
 	my $text = "" ;
