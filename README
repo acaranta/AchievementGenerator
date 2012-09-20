@@ -53,3 +53,5 @@ Every other time the same image/parameters are asked, it is read from the disk i
 *Allow a way to return directly an url to the cached generted image
 *add a nocacheparameter
 *add a way to empty cache (?)
+*Added date insertion ?
+*review system to deliver static urls ?
