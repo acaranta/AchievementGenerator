@@ -16,7 +16,13 @@ my $cachedir = "cache" ;
 my $cachestring = "" ;
 ##### CGI Start and options parsing
 my $cgi = new CGI ;
+my $pCGIMode = $cgi->param('cgimode') ;
+if ($pCGIMode eq "link")
+{
+print $cgi->header('Content-type: text/html; charset=utf-8') ;
+} else {
 print $cgi->header('Content-type: image/png; charset=utf-8') ;
+}
 my $imgGen ;
 sub imgcached
 {
@@ -364,6 +370,11 @@ if ($pMode eq "ps3")
 		$imgGen->ReadImage($cachestring) ;
 	}
 }
+
+if ($pCGIMode eq "link")
+{
+	print "Your Achievement : <img src='$cachestring' /><br/>Link : $cachestring<br/>" ;
+} else {
 my $pSize = $cgi->param('size') ;
 #$pSize = "200" ;
 if ($pSize =~ /[0-9+]/)
@@ -382,3 +393,4 @@ if ($pSize =~ /[0-9+]/)
 binmode STDOUT;
 $imgGen->Write('png:-');
 ###### SENDING IMAGE DATA TO STDOUT
+}
