@@ -19,9 +19,10 @@ my $cgi = new CGI ;
 my $pCGIMode = $cgi->param('cgimode') ;
 if ($pCGIMode eq "link")
 {
-print $cgi->header('Content-type: text/html; charset=utf-8') ;
+	print $cgi->header('Content-type: text/html; charset=utf-8') ;
+	print $cgi->start_html(-title=>"Achievement Generator", -encoding=>"UTF-8")
 } else {
-print $cgi->header('Content-type: image/png; charset=utf-8') ;
+	print $cgi->header('Content-type: image/png; charset=utf-8') ;
 }
 my $imgGen ;
 sub imgcached
@@ -373,24 +374,24 @@ if ($pMode eq "ps3")
 
 if ($pCGIMode eq "link")
 {
-	print "Your Achievement : <img src='$cachestring' /><br/>Link : $cachestring<br/>" ;
+	print "<p align='center'>Your Achievement : <br/><a href='http://$ENV{SERVER_NAME}/$cachestring'><img src='$cachestring' /></a><br/><br/>Link : <a href='http://$ENV{SERVER_NAME}/$cachestring'>http://$ENV{SERVER_NAME}/$cachestring</a><br/></p>" ;
 } else {
-my $pSize = $cgi->param('size') ;
+	my $pSize = $cgi->param('size') ;
 #$pSize = "200" ;
-if ($pSize =~ /[0-9+]/)
-{
-	my $width = $imgGen->Get('columns');
-	my $height = $imgGen->Get('rows'); ;
-	my $ratio = $width / $height ;
-	$height = ($pSize * $height) / $width ;
+	if ($pSize =~ /[0-9+]/)
+	{
+		my $width = $imgGen->Get('columns');
+		my $height = $imgGen->Get('rows'); ;
+		my $ratio = $width / $height ;
+		$height = ($pSize * $height) / $width ;
 
-	$imgGen->Resize(
-			width => $pSize,
-			height => $height
-		       ) ;
-}
+		$imgGen->Resize(
+				width => $pSize,
+				height => $height
+			       ) ;
+	}
 ###### SENDING IMAGE DATA TO STDOUT
-binmode STDOUT;
-$imgGen->Write('png:-');
+	binmode STDOUT;
+	$imgGen->Write('png:-');
 ###### SENDING IMAGE DATA TO STDOUT
 }
