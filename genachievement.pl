@@ -54,6 +54,8 @@ sub ps3gen
 	my $pText = $cgi->param('text') ;
 	my $pLevel = $cgi->param('level') ;
 	my $pLocale = $cgi->param('locale') ;
+	my $pDate = $cgi->param('date') ;
+	if ($pDate !~ /^[0-9]+.[0-9]+.[0-9]+$/) { $pDate = "" ; } 
 
 	if ($pLocale eq "fr") { $textHeader = "Vous avez obtenu un trophée." ; } 
 	else { $textHeader = "You have earned a trophy." ; } 
@@ -145,6 +147,18 @@ sub ps3gen
 			gravity => 'west',
 			style => 'normal',
 			) ;
+	if ($pDate ne "") 
+	{
+		$imgComposite->Annotate(
+				text => $pDate, 
+				font => $fontfile, 
+				pointsize => $textsize/2,
+				geometry => '+20+10',
+				fill => 'white',
+				gravity => 'southeast',
+				style => 'bold',
+				) ;
+	}
 ###### ADDING TEXT
 
 	return $imgComposite ;
@@ -171,6 +185,8 @@ sub xboxgen
 	my $pText = $cgi->param('text') ;
 	my $pPoint = $cgi->param('point') ;
 	my $pLocale = $cgi->param('locale') ;
+	my $pDate = $cgi->param('date') ;
+	if ($pDate !~ /^[0-9]+.[0-9]+.[0-9]+$/) { $pDate = "" ; } 
 
 	if ($pLocale eq "fr") { $text = "Succès déverrouillé !" ; }
 	else { $text = "Achievement Unlocked !" ; }
@@ -325,6 +341,18 @@ sub xboxgen
 			gravity => 'west',
 			style => 'bold',
 			) ;
+	if ($pDate ne "") 
+	{
+		$imgComposite->Annotate(
+				text => $pDate, 
+				font => $fontfile, 
+				pointsize => $textsize/2,
+				geometry => '+40+10',
+				fill => 'white',
+				gravity => 'southeast',
+				style => 'bold',
+				) ;
+	}
 ###### ADDING TEXT
 
 	return $imgComposite ;
@@ -340,12 +368,15 @@ sub xboxgen
 
 
 my $pMode = $cgi->param('mode') ;
+my $pText = $cgi->param('text') ;
+my $pLevel = $cgi->param('level') ;
+my $pLocale = $cgi->param('locale') ;
+my $pDate = $cgi->param('date') ;
+my $pPoint = $cgi->param('point') ;
+if ($pDate !~ /^[0-9]+\/[0-9]+\/[0-9]+$/) { $pDate = "" ; } 
 if ($pMode eq "ps3") 
 {
-	my $pText = $cgi->param('text') ;
-	my $pLevel = $cgi->param('level') ;
-	my $pLocale = $cgi->param('locale') ;
-	$cachestring = "$pText$pLevel$pLocale" ;
+	$cachestring = "$pText$pLevel$pLocale$pDate" ;
 	$cachestring = "$cachedir/$pMode"."_".md5_hex($cachestring).".png" ;
 	if (imgcached($cachestring) == 0)
 	{
@@ -357,10 +388,7 @@ if ($pMode eq "ps3")
 	}
 } else {
 	$pMode = "xbox" ;
-	my $pText = $cgi->param('text') ;
-	my $pPoint = $cgi->param('point') ;
-	my $pLocale = $cgi->param('locale') ;
-	$cachestring = "$pText$pPoint$pLocale" ;
+	$cachestring = "$pText$pPoint$pLocale$pDate" ;
 	$cachestring = "$cachedir/$pMode"."_".md5_hex($cachestring).".png" ;
 	if (imgcached($cachestring) == 0)
 	{
