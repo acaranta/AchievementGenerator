@@ -20,6 +20,7 @@ Parameters are passed as POST variables.
 *locale=(en|fr)
 *text=<well...your text which should be shown on the second line>
 *size=[0-9]+ ... Sets the output image width
+*date=[0-9]+.[0-9]+.[0-9]+ ... Adds the date entered as a watermark
 
 2.1.2 for XBOX Achievements
 *point=[0-9]+ ... this allows to show a GamerPoint earned score
@@ -53,5 +54,4 @@ Every other time the same image/parameters are asked, it is read from the disk i
 *Allow a way to return directly an url to the cached generted image
 *add a nocacheparameter
 *add a way to empty cache (?)
-*Added date insertion ?
 *review system to deliver static urls ?
