@@ -41,6 +41,7 @@ sub ps3gen
 	$imgdir = "$imgdir/PS3" ;
 	my $textHeader = "You have earned a trophy" ;
 	my $text = "" ;
+	my $texttop = "" ;
 	my $textsize = '28' ;
 #	my $logo = "$imgdir/OrangeLogo.png" ;
 	my $logo = "$imgdir/psn_logo.png" ;
@@ -64,7 +65,11 @@ sub ps3gen
 	{
 		$text = "$pText" ;
 	} 
+	if ($pText =~ /§/)
+	{
+		($textHeader, $text) = split('§',$pText) ;
 
+	}
 	if ($pLevel eq "0") { $trophy = "$imgdir/trophee_ps3_bronze.png" ; }
 	elsif ($pLevel eq "1") { $trophy = "$imgdir/trophee_ps3_argent.png" ; }
 	elsif ($pLevel eq "2") { $trophy = "$imgdir/trophee_ps3_or.png" ; }
@@ -200,6 +205,11 @@ sub xboxgen
 		$pPoint = $pPoint."G - ";
 	} else {
 		$pPoint = "" ;
+	}
+	if ($pText =~ /§/)
+	{
+		($text, $pText) = split('§',$pText) ;
+
 	}
 
 	if (defined($pText))
