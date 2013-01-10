@@ -162,7 +162,7 @@ sub ps3gen
 				text => $pDate, 
 				font => $fontfile, 
 				pointsize => $textsize/2,
-				geometry => '+20+10',
+				geometry => '+20+40',
 				fill => 'white',
 				gravity => 'southeast',
 				style => 'bold',
