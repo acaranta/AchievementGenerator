@@ -44,7 +44,7 @@ sub ps3gen
 	my $texttop = "" ;
 	my $textsize = '28' ;
 #	my $logo = "$imgdir/OrangeLogo.png" ;
-	my $logo = "$imgdir/psn_logo.png" ;
+	my $logo = "$imgdir/default_logo.png" ;
 #my $fontfile = "fonts/SCE-PS3-RD-R-LATIN2.TTF" ;
 	my $fontfile = "fonts/PS3/SCE-PS3-RD-L-LATIN2.TTF" ;
 	my $fontfilebold = "fonts/PS3/SCE-PS3-RD-B-LATIN2.TTF" ;
@@ -114,6 +114,10 @@ sub ps3gen
 			) ;
 
 	$imgplayer->ReadImage($logo) ;
+	$imgplayer->Resize(
+			width => 85,
+			height => 85,
+			) ;
 
 ###### ADDING LEFT LOGOS
 	$imgComposite->Composite(
