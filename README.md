@@ -41,6 +41,13 @@ The image is directly returned as an 'image/png' with transparency.
 The nice trick is that if the image is asked (with its parameters) asked for the first time, it is generated, stored in the cache directory and returned to the browser.
 Every other time the same image/parameters are asked, it is read from the disk insted of regenerating it completely
 
+Examples
+---------
+`http://example.com/genachievement.pl?text=XBOX Rulez&point=5&date=08/04/2014&locale=en&size=400`
+[XBOX](http://achieve.minixer.com/genachievement.pl?text=XBOX Rulez&point=5&date=08/04/2014&locale=en&size=400)
+
+`http://example.com/genachievement.pl?mode=ps3&text=PS3 Rulez Too&level=1&date=08/04/2014&locale=en&size=400`
+[PS3](http://achieve.minixer.com/genachievement.pl?mode=ps3&text=PS3 Rulez Too&level=1&date=08/04/2014&locale=en&size=400)
 
 Future / TODO :
 ----------
