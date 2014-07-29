@@ -44,10 +44,10 @@ Every other time the same image/parameters are asked, it is read from the disk i
 Examples
 ---------
 `http://example.com/genachievement.pl?text=XBOX Rulez&point=5&date=08/04/2014&locale=en&size=400`
-![XBOX](http://achieve.minixer.com/genachievement.pl?text=XBOX Rulez&point=5&date=08/04/2014&locale=en&size=400)
+![XBOX](https://raw.githubusercontent.com/acaranta/AchievementGenerator/master/examples/xbox.png)
 
 `http://example.com/genachievement.pl?mode=ps3&text=PS3 Rulez Too&level=1&date=08/04/2014&locale=en&size=400`
-![PS3](http://achieve.minixer.com/genachievement.pl?mode=ps3&text=PS3 Rulez Too&level=1&date=08/04/2014&locale=en&size=400)
+![PS3](https://raw.githubusercontent.com/acaranta/AchievementGenerator/master/examples/ps3.png)
 
 Future / TODO :
 ----------
