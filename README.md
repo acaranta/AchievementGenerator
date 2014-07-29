@@ -1,51 +1,38 @@
-1. PreRequisites :
-------------------
-1.2 Packages :
---------------
+Requirements
+---------------
+Software :
 - debian/ubuntu : perlmagick
 - other/CPAN : Perl::Magick
 - and obviously apache2 with perl module enabled
 
 
-1.3 Rights :
-------------
-the onyl really needed right is theon the cache directory which must be readable AND writable by apache
+Rights :
+the only really needed right is theon the cache directory which must be readable AND writable by apache
 
-2 Usage :
+Usage
 ---------
 point your browser to 
 `http://<whateverhteinstallpath>/generateimage.pl?<parameters>`
+where parameters are :
+- Common Parameters :
+  - mode=(xbox|ps3)
+  - locale=(en|fr)
+  - text=<well...your text which should be shown on the second line>
+  - size=[0-9]+ ... Sets the output image width
+  - date=[0-9]+.[0-9]+.[0-9]+ ... Adds the date entered as a watermark
+- XBOX Specifics :
+  - point=[0-9]+ ... this allows to show a GamerPoint earned score
+- PS3 Trophies
+  - level=[0-3] ... this allows to change the level of the trophy ranging from 0 to 3... which is from bronze up to platinum
 
-Parameters are passed as POST variables.
-
-2.1 Parameters
---------------
-2.1.1 Common Parameters
------------------------
-- mode=(xbox|ps3)
-- locale=(en|fr)
-- text=<well...your text which should be shown on the second line>
-- size=[0-9]+ ... Sets the output image width
-- date=[0-9]+.[0-9]+.[0-9]+ ... Adds the date entered as a watermark
-
-2.1.2 for XBOX Achievements
----------------------------
-- point=[0-9]+ ... this allows to show a GamerPoint earned score
-
-2.1.3 for PS3 Trophies
-----------------------
-- level=[0-3] ... this allows to change the level of the trophy ranging from 0 to 3... which is from bronze up to platinum
-
-2.1.4 Defaults 
---------------
-if the parameters are omitted then they are set like this :
+if the parameters are omitted then they are set like this by default :
 - mode=xbox
 - locale=en
 - size=about 450px
 - point=0 ... nothing shown
 - level=0 .. bronze
 
-3 How it works
+How it works
 --------------
 It uses ImageMagick, several pieces of images and fonts to generate mockups of achievements/trophies well known of gamers.
 
@@ -55,7 +42,7 @@ The nice trick is that if the image is asked (with its parameters) asked for the
 Every other time the same image/parameters are asked, it is read from the disk insted of regenerating it completely
 
 
-4 Future / TODO :
+Future / TODO :
 ----------
 - Allow easy configuration
 - [XBOX] Allow change of logo
